@@ -58,5 +58,4 @@ If you have any questions or issues with the SIMS application, please feel free 
 
 Thank you for using the Student Information Management System (SIMS)!
 
----
-*Note: Replace placeholders such as `your-username`, `your-email@example.com`, and other specific details with the actual information for your project.*
+
