@@ -1,0 +1,151 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <form class="form" [formGroup]="studentDetails">
+    <div class="maindiv">
+
+      <div class="row mb-3 ">
+    
+       
+          <label class="col-4 text">Name </label>
+          <span class="col-1">:</span>
+         
+          <input class="col-4" type="text" class="form-control w-25" formControlName="name">
+
+      <div class="error">   
+        <p class="error-msg m-2" *ngIf="studentDetails.get('name')?.hasError('minlength') && studentDetails.get('name')?.touched ">Name should minimum contain 3 characters</p>
+        <p class="error-msg m-2" *ngIf="studentDetails.get('name')?.hasError('required') && studentDetails.get('name')?.touched ">Please enter your name</p>
+        <p class="error-msg m-2" *ngIf="studentDetails.get('name')?.hasError('maxlength') && studentDetails.get('name')?.touched ">Name shouldnot contain more than 30 characters</p>
+        <p class="error-msg m-2" *ngIf="studentDetails.get('name')?.hasError('required') && this.temp">please enter the name</p>
+      </div> 
+        
+        
+      </div>
+    
+      <div class="row mb-3">
+      
+       
+          <label class="col-4 text">Gender  </label>
+          <span class="col-1">:</span>
+         
+        
+    
+        
+    
+          <div class="col-1 form-check form-check-inline">
+    
+            <input class="form-check-input"  type="radio" name="Gender" formControlName="Gender" value="MALE">
+            <label class="form-check-label">Male</label>
+          
+          </div>
+    
+          <div class=" col-1 form-check form-check-inline">
+    
+            <input class="form-check-input"  type="radio" name="Gender" formControlName="Gender" value="FEMALE">
+            <label class="form-check-label">Female</label>
+    
+          </div>
+    
+          <div class=" col-1 form-check form-check-inline">
+    
+            <input class="form-check-input"  type="radio" name="Gender" formControlName="Gender" value="OTHERS">
+            <label class="form-check-label">Others</label>
+    
+          </div>
+          <div class="error"> 
+        <p class="error-msg m-2" *ngIf="studentDetails.get('Gender')?.hasError('required') && this.temp">Select Gender</p>
+          </div>
+        
+      </div>
+      
+      <div class="row mb-3">
+    
+        
+          <label class="col-4 text"> Location </label>
+          <span class="col-1">:</span> 
+          
+        
+      
+        
+          <select class="form-select col-4 w-25" formControlName="location">
+            <option selected >Hyderabad</option>
+            <option>Bangalore</option>
+            <option>Chennai</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+          </select>
+          <div class="error"> 
+            <p class="error-msg m-2" *ngIf="studentDetails.get('location')?.hasError('required') && this.temp">please Select the location</p>
+          </div>
+    
+      </div>
+    
+      <div class="row mb-3" >
+    
+        
+        <label class="col-4 text"> Address </label>
+        <span class="col-1 ">:</span>
+         
+        <textarea class="form-control w-25 col-4 input" rows="5" formControlName="address"></textarea>
+        <div class="error"> 
+          <p class="error-msg m-2" *ngIf="studentDetails.get('address')?.hasError('minlength') && studentDetails.get('address')?.touched ">Address should minimum contain 6 characters.</p>
+          <p class="error-msg m-2" *ngIf="studentDetails.get('address')?.hasError('required') && studentDetails.get('address')?.touched ">Please studentDetails userName.</p>
+          <p class="error-msg m-2" *ngIf="studentDetails.get('address')?.hasError('maxlength') && studentDetails.get('address')?.touched ">Address shouldnot contain more than 150 characters.</p>
+          <p class="error-msg m-2" *ngIf="studentDetails.get('address')?.hasError('required') && this.temp">please enter your address</p>
+        </div>
+    
+      </div>
+    
+      
+    
+      <div class="row mb-3">
+        
+       
+          <label class="col-4 text">Skills</label> 
+          <span class="col-1">:</span>
+        
+       
+          
+          <div class="col-1 input form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" value="html" formControlName="skills1">
+            <label class="form-check-label" >HTML</label>
+          </div>
+    
+          <div class="col-1 input form-check form-check-inline">
+            <input type="checkbox" class="form-check-input"  formControlName="skills2" value="java">
+            <label class="form-check-label">JAVA</label>
+          </div>
+    
+          <div class="col-1 input form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" formControlName="skills3" value="Angular">
+            <label class="form-check-label">ANGULAR</label>
+          </div>
+        
+       
+    
+      </div>
+    
+      <div class="row">
+    
+        <div class="col-6 edit">
+          <button class="btn btn-primary" (click)="clear()">Clear</button>
+        </div>
+      
+        <div class="col-6 input">
+          <button class="btn btn-primary" (click)="add()">Submit</button>
+        </div>
+    
+      </div>
+     </div> 
+  
+  </form>
+
+
+  <app-table [FA]="finalarray" [SD]="studentDetails" (editTable)="edit($event)"></app-table>
+
+
+
+
+
+
+
